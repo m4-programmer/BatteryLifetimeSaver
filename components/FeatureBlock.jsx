@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import P from './P';
 const FeatureBlock = ({title, text, navigate}) => {
   return (
-    <TouchableOpacity className="flex-row justify-between items-start my-4 " onPress={()=>navigate()}>
+    <TouchableOpacity className="flex-row justify-between items-start my-4 " onPress={navigate}>
           {/* Left Side */}
           <View >
             <H3 text={title} />
