@@ -1,23 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Platform } from 'react-native';
+import Header from './components/Header';
+import BatteryCard from './components/BatteryCard';
+
+const ios = Platform.OS === 'ios'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text className="text-red-800 text-justify">Open up App.js to start working on your app!
-      65bd1c3e8f4651f541d7320f
-      65b91da34665f39954b68b36
-      </Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      
+      <Header />
+
+      <ScrollView contentContainerStyle={styles.body}>
+        {/* Card Section for batter */}
+        <BatteryCard />
+        {/*  */}
+      </ScrollView>
+      
+      <StatusBar style="light" />
+    </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#121717',
+    paddingTop: 100
   },
+  body: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: ios ? 50 : 0,
+  
+  }
 });
