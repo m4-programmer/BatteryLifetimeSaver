@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Platform } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import Header from './components/Header';
 import BatteryCard from './components/BatteryCard';
 import React, { useEffect } from 'react'
 import * as Battery from 'expo-battery';
 
+import FeatureBlock from './components/FeatureBlock';
 const ios = Platform.OS === 'ios'
 
 export default function App() {
@@ -20,8 +21,6 @@ export default function App() {
         setIsCharging(batteryState === 2 ? "Yes" : "No");
         setIsBatteryFull(batteryState === 3 ? "Yes" : "No");
         setBatteryLevel(level); // Convert to percentage
-        setLowPowerMode(mode.lowPowerMode);
-    
     };
     useEffect(()=>{
         getBatteryDetails()
@@ -34,6 +33,7 @@ export default function App() {
              subscription.remove();
          };
     },[1000])
+    const navigate = () => {}
   return (
     <SafeAreaView style={styles.container}>
       
@@ -42,7 +42,18 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.body}>
         {/* Card Section for batter */}
         <BatteryCard batteryLevel={batteryLevel} isCharging={isCharging} isBatteryFull={isBatteryFull}/>
-        {/*  */}
+
+        <Text className="text-2xl pt-10 text-white font-extrabold">Features</Text>
+        {/* Optimize Brightness */}
+          <FeatureBlock title={"Optimize for battery"} text={"Reduce brightness"} navigate={navigate} />
+        {/* Set Notification */}
+          <FeatureBlock title={"Notification Settings"} text={"Set notification to help you save battery"} navigate={navigate} />
+        {/* Set Permission */}
+        <FeatureBlock title={"Permission Settings"} text={"Set permission"} navigate={navigate} />
+        {/* Top Battery Consuming Apps */}
+        <View >
+
+        </View>
       </ScrollView>
       
       <StatusBar style="light" />
@@ -58,9 +69,7 @@ const styles = StyleSheet.create({
     paddingTop: 100
   },
   body: {
-    justifyContent: "center",
-    alignItems: "center",
     paddingTop: ios ? 50 : 0,
-  
+    paddingHorizontal: 30,
   }
 });
