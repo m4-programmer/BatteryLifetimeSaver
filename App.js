@@ -52,7 +52,7 @@ export default function App() {
         <FeatureBlock title={"Permission Settings"} text={"Set permission"} navigate={navigate} />
         {/* Top Battery Consuming Apps */}
         <View >
-
+        
         </View>
       </ScrollView>
       
