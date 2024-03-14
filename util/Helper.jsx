@@ -1,0 +1,1 @@
+export const  BatterLevel = (batteryLevel) => Math.round(batteryLevel * 100)
