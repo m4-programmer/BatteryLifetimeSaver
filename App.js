@@ -2,10 +2,38 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, Platform } from 'react-native';
 import Header from './components/Header';
 import BatteryCard from './components/BatteryCard';
+import React, { useEffect } from 'react'
+import * as Battery from 'expo-battery';
 
 const ios = Platform.OS === 'ios'
 
 export default function App() {
+    const [batteryLevel, setBatteryLevel] = React.useState(null);
+    const [isCharging, setIsCharging] = React.useState("No");
+    const [isBatteryFull, setIsBatteryFull] = React.useState("No");
+
+    const getBatteryDetails = async () => {
+        const level = await Battery.getBatteryLevelAsync();
+        const mode = await Battery.getPowerStateAsync();
+        const batteryState = await Battery.getBatteryStateAsync();
+        console.log(batteryState);
+        setIsCharging(batteryState === 2 ? "Yes" : "No");
+        setIsBatteryFull(batteryState === 3 ? "Yes" : "No");
+        setBatteryLevel(level); // Convert to percentage
+        setLowPowerMode(mode.lowPowerMode);
+    
+    };
+    useEffect(()=>{
+        getBatteryDetails()
+
+         // Event listener for battery state changes
+         const subscription = Battery.addBatteryStateListener(getBatteryDetails);
+
+         // Clean-up function
+         return () => {
+             subscription.remove();
+         };
+    },[1000])
   return (
     <SafeAreaView style={styles.container}>
       
@@ -13,7 +41,7 @@ export default function App() {
 
       <ScrollView contentContainerStyle={styles.body}>
         {/* Card Section for batter */}
-        <BatteryCard />
+        <BatteryCard batteryLevel={batteryLevel} isCharging={isCharging} isBatteryFull={isBatteryFull}/>
         {/*  */}
       </ScrollView>
       
