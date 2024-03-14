@@ -5,7 +5,7 @@ const BatteryCard = ({batteryLevel,isCharging, isBatteryFull}) => {
     
   const bgColor = BatterLevel(batteryLevel) < 20 ? 'bg-red-500 ' : (isCharging === 'Yes') ? ' bg-orange-400 bg-gradient-to-b' : ' bg-purple-500 ';
   return (
-    <View className={`${bgColor} w-[90%] h-100 rounded py-4 px-3`} style={styles.box}> 
+    <View className={`${bgColor} w-[100%] h-100 rounded py-4 px-3`} style={styles.box}> 
         {/* Battery image */}
         <View></View>
         {/* Description */}
