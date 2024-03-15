@@ -36,14 +36,14 @@ const BatteryCard = ({batteryLevel,isCharging, isBatteryFull, deviceName = null}
             </Text>
         </View>
 
-        <View className="flex flex-row justify-between py-3">
+        {/* <View className="flex flex-row justify-between py-3">
             <Text className="text-white text-xl font-bold ">
                 Device Name: 
             </Text>
             <Text className="text-lg font-bold">
                 {deviceName}
             </Text>
-        </View>
+        </View> */}
     </View>
   )
 }
