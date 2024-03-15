@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BatterSaver",
-    "slug": "BatterSaver",
+    "name": "Battery lifetime saver",
+    "slug": "BatteryLifetimeSaver",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,14 +22,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mine679.BatterSaver"
+      "package": "com.mine679.BatteryLifetimeSaver"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "6d7d102d-492e-4aba-ac54-553a37682ad9"
+        "projectId": "faec13b4-eb94-4463-95d4-6daf09fbd9ac"
       }
     }
   }
